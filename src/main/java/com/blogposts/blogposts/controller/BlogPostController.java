@@ -13,7 +13,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/blog-posts")
-@CrossOrigin("*")
+@CrossOrigin(origins = "http://localhost:3000/*")
 public class BlogPostController {
 
     private final BlogPostsService blogPostsService;
@@ -22,7 +22,7 @@ public class BlogPostController {
         this.blogPostsService = blogPostsService;
     }
 
-
+    @CrossOrigin(origins = "http://localhost:3000/*")
     @GetMapping
     public ResponseEntity<List<BlogPostsDTO>> getBlogPosts(){
         return ResponseEntity.of(Optional.ofNullable(blogPostsService.getAllBlogPosts()));
